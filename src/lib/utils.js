@@ -63,7 +63,7 @@ export function checkGuess(guess, answer) {
   return result;
 }
 
-const normalizeString = (str) => {
+export const normalizeString = (str) => {
   return str
     .normalize('NFD') 
     .replace(/[\u0300-\u036f]/g, '') 

@@ -4,6 +4,7 @@ import { CheckCircle } from 'lucide-react';
 import { Toggle } from '@/components/ui/toggle';
 import { Separator } from '@/components/ui/separator';
 import { Avatar, AvatarImage } from '@/components/ui/avatar';
+import { MAX_GUESSES } from '@/config';
 
 import Image from 'next/image';
 
@@ -36,11 +37,21 @@ export const Intro = ({ onGetStartedClick, gameType, setGameType }) => {
           Régles du jeu
         </h3>
         <div className="flex flex-col items-start mt-5 sm:mt-10 space-y-5">
-          <div className="flex items-center space-x-2">
-            <CheckCircle className="w-4 h-4 sm:w-6 sm:h-6 text-brand-green" />
+          <div className="flex items-center gap-4">
+            <CheckCircle className="min-w-4 min-h-4 max-w-4 max-h-4 sm:w-6 sm:h-6 text-brand-green" />
 
             <p className="text-sm text-gray-300 font-normal sm:text-xl">
-              Choisir...
+              Que des pays ou des capitales unies sans espace ou
+              tiret.
+            </p>
+          </div>
+          <div className="flex items-center gap-4">
+            <CheckCircle className="min-w-4 min-h-4 max-w-4 max-h-4 sm:w-6 sm:h-6 text-brand-green" />
+
+            <p className="text-sm text-gray-300 font-normal sm:text-xl">
+              Vous n'avez que{' '}
+              {MAX_GUESSES > 1 ? `${MAX_GUESSES} essais` : 'un essai'} pour
+              trouver le mot.
             </p>
           </div>
         </div>

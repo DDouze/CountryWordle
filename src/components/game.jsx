@@ -7,11 +7,11 @@ import { MAX_GUESSES } from '@/config';
 import { Results } from '@/components/results';
 import Image from 'next/image';
 
-export function Game({ gameType }) {
+export function Game({ gameType, randomCountry }) {
   // running | won | lost
   const [gameStatus, setGameStatus] = useState('running');
   const [answer, setAnswer] = useState(() => {
-    return gameType === 'country' ? 'FRANCE' : 'PARIS';
+    return gameType === 'country' ? randomCountry.name : randomCountry.capital;
   });
   const [guesses, setGuesses] = useState([]);
   const answerLength = answer.length;
@@ -40,7 +40,7 @@ export function Game({ gameType }) {
       </div>
       <div className="flex flex-1 flex-col gap-4 p-6 mx-auto my-0 min-w-[350px] max-w-[min(500px,58vh,100%)]">
         <Image
-          src="/flag.png"
+          src={randomCountry.flag}
           alt="Drapeau"
           width={450}
           height={300}

@@ -6,7 +6,7 @@ import { Intro } from '@/components/intro';
 import { Countdown } from '@/components/countdown';
 import { Game } from '@/components/game';
 
-export function GameClient() {
+export function GameClient({ randomCountry }) {
   const [displayView, setDisplayView] = useState('intro');
   const [gameType, setGameType] = useState('country');
   return (
@@ -30,7 +30,7 @@ export function GameClient() {
                 }}
               />
             ),
-            game: <Game gameType={gameType}  />,
+            game: <Game randomCountry={randomCountry} gameType={gameType} />,
           }[displayView]
         }
       </AnimatePresence>
