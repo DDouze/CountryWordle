@@ -1,13 +1,14 @@
 import { GameClient } from '@/components/game-client';
 import { normalizeString } from '@/lib/utils';
-import axios from 'axios';
 
 const fetchData = async () => {
   try {
-    const response = await axios.get(
-      'https://restcountries.com/v3.1/all?fields=name,capital,flags,translations'
-    );
-    const countries = response.data?.filter((country) => {
+    const dynamicData = await fetch(
+      'https://restcountries.com/v3.1/all?fields=name,capital,flags,translations',
+      { cache: 'no-store' }
+    ).then((response) => response.json());
+
+    const countries = dynamicData?.filter((country) => {
       const name = country.translations?.fra?.common;
       const capital = country.capital ? country.capital[0] : '';
       const isValid =
@@ -37,5 +38,6 @@ const fetchData = async () => {
 
 export default async function GamePage() {
   const randomCountry = await fetchData();
+
   return <GameClient randomCountry={randomCountry} />;
 }
