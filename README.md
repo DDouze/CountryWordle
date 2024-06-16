@@ -28,6 +28,7 @@ Pour installer et exécuter ce projet, suivez les étapes suivantes :
 ```bash
 git clone https://github.com/DDouze/CountryWordle.git
 cd CountryWordle
+npm install
 npm run dev
 ```
 
